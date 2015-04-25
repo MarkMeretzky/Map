@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html style = "width: 100%; height: 100%">
+<head>
+    <meta charset = "utf-8">
+    <title>Map</title>
+
+    <script type = "text/javascript" src = "http://maps.google.com/maps/api/js?sensor=false">
+    </script>
+
+    <script type = "text/javascript">
+
+// This JavaScript function is called from the onPageFinished method of class MapWebViewClient.
+
+function mapFunction(latitude, longitude, zoom) {
+/*
+	alert(
+		'mapFunction('
+		+ latitude + ', '
+		+ longitude + ', '
+		+ zoom + ')'
+	);
+*/
+
+	var division = document.getElementById('map');
+	if (division == null) {
+		alert("map division not found");
+		return;
+	}
+
+	var position = new google.maps.LatLng(latitude, longitude);
+
+	var options = {
+		center: position,
+		mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+		mapTypeId: google.maps.MapTypeId.HYBRID,
+		scaleControl: true,
+		zoom: zoom
+	};
+
+	var map = new google.maps.Map(division, options);
+
+/*
+	options = {
+		position: position,
+		map: map,
+		title: 'Woolworth Building'
+	};
+
+	var marker = new google.maps.Marker(options);
+*/
+
+/*
+	options = {
+		content:
+			'<B>Woolworth Building</B>'
+			+ '<BR>'
+			+ Math.abs(latitude)  + '&deg;' + (latitude  >= 0 ? 'N' : 'S') + ' '
+			+ Math.abs(longitude) + '&deg;' + (longitude >= 0 ? 'E' : 'W'),
+		position: position
+	};
+
+	var infowindow = new google.maps.InfoWindow(options);
+	infowindow.open(map);
+*/
+}
+</script>
+</head>
+
+<body style = "width: 100%; height: 100%; margin: 0px; padding: 0px;">
+<div id = "map" style = "width: 100%; height: 100%;">
+</div>
+</body>
+</html>
